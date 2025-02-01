@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Roses</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6e6;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            color: #d63384;
+            font-size: 2.5rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .rose-img {
+            width: 80%;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        .rose-img:hover {
+            transform: scale(1.1);
+        }
+        .message {
+            font-size: 1.2rem;
+            color: #822b42;
+            padding: 15px;
+            margin-top: 20px;
+            background: #ffc0cb;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+            transition: background 0.3s;
+        }
+        .message:hover {
+            background: #ff99aa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>For My Love</h1>
+        <img class="rose-img" src="https://source.unsplash.com/500x300/?roses" alt="Beautiful Roses">
+        <p class="message">You are the most beautiful rose in my garden of life. 🌹❤️</p>
+    </div>
+</body>
+</html>

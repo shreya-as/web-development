@@ -1,0 +1,31 @@
+/* Flex container styles */
+.container {
+    display: flex; /* Enable Flexbox */
+    gap: 10px; /* Space between items */
+    justify-content: ; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    min-height: 100vh; /* Full-height container */
+    background-color: #ddd;
+    padding: 20px;
+  }
+  
+  /* Flex item styles */
+  .box {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.5rem;
+    /* flex: auto; */
+  }
+  
+  .box.small {
+    flex: 1; /* Small box takes less space */
+  }
+  
+  .box.large {
+    flex: 3; /* Large box takes more space */
+  }
+  

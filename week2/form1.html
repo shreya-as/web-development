@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <h1>Form</h1>
+    </header>
+    <main>
+      <form action="/submit.php" method="post">
+        <label for="name">First Name:</label>
+        <input type="text" id="name" placeholder="Enter First Name" />
+        <br /><br />
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" placeholder="Enter Last Name" />
+        <br />
+        <p>Choose only One</p>
+
+        <input type="radio" id="male" name="gender" />
+        <label for="male"> Male </label>
+        <input type="radio" id="female" name="gender" />
+        <label for="female"> Female </label>
+
+        <br />
+        <h2>Favourite Subjects</h2>
+        <input type="checkbox" id="math" name="math" value="math" />
+        <label for="math">Math</label>
+        <input type="checkbox" id="science" name="science" value="science" />
+        <label for="science">Science</label>
+        <input type="checkbox" id="english" name="english" value="english" />
+        <label for="english">English</label>
+
+        <h2>Country</h2>
+        <select id="country" name="country">
+          <option>Select</option>
+          <option value="usa">Nepal</option>
+          <option value="usa">USA</option>
+          <option value="canada">Canada</option>
+          <option value="australia">Australia</option>
+        </select>
+        <br />
+        <br />
+        <label for="aboutMe">About Me:</label>
+        <br />
+        <textarea name="aboutMe" id="aboutMe">
+            Test
+        </textarea>
+        <br />
+        <button type="button">Submit</button>
+      </form>
+    </main>
+    <footer>
+      <!-- <p>Footer</p> -->
+    </footer>
+  </body>
+</html>

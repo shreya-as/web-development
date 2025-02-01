@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete HTML Form</title>
+</head>
+<body>
+  <h1> HTML Form</h1>
+  <form action="/submit" method="post">
+    <!-- Text Input -->
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="fullName" placeholder="Enter your full name" >
+    <br><br>
+
+    <!-- Email Input -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="example@example.com" >
+    <br><br>
+
+    <!-- Password Input -->
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" >
+    <br><br>
+
+    <!-- Number Input -->
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" min="1" max="120">
+    <br><br>
+
+    
+
+    <!-- Checkbox -->
+    <fieldset>
+      <legend>Select Your Interests:</legend>
+      <!-- <label for="test">Test</label> -->
+      <!-- <input type="checkbox" name="test" value="coding" id="test"> -->
+      <label><input type="checkbox" name="interests" value="coding"> Coding</label>
+      <label><input type="checkbox" name="interests" value="music"> Music</label>
+      <label><input type="checkbox" name="interests" value="sports"> Sports</label>
+    </fieldset>
+    <br>
+
+    <!-- Radio Buttons -->
+      <p>Choose Your Gender:</p>
+      <label><input type="radio" name="gender" value="male"> Male</label>
+      <label><input type="radio" name="gender" value="female"> Female</label>
+      <label><input type="radio" name="gender" value="other"> Other</label>
+    <br>
+
+    <!-- Dropdown -->
+    <label for="country">Country:</label>
+    <select id="country" name="country" required>
+      <option value="">Select a country</option>
+      <option value="usa">USA</option>
+      <option value="canada">Canada</option>
+      <option value="australia">Australia</option>
+    </select>
+    <br>
+
+    <!-- Textarea -->
+    <label for="bio">Short Bio:</label>
+    <textarea id="bio" name="bio" rows="4" cols="40" placeholder="Tell us something about yourself"></textarea>
+    <br><br>
+
+    <!-- File Upload -->
+    <label for="photo">Upload a Profile Picture:</label>
+    <input type="file" id="photo" name="photo">
+    <br><br>
+
+    <!-- Submit Button -->
+    <button type="submit">Submit</button>
+
+    <!-- Reset Button -->
+    <button type="reset">Reset</button>
+  </form>
+</body>
+</html>
