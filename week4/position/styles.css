@@ -1,0 +1,36 @@
+.container {
+  width: 300px;
+  height: 200px;
+  background-color: grey;
+  position: relative;
+}
+
+.box {
+  width: 50px;
+  height: 50px;
+  background-color: green;
+  margin: 10px;
+}
+
+.box-1 {
+  position: sticky;
+  top: 50px;
+}
+
+body{
+  height: 800px;
+}
+
+/* .box-2 {
+  position: absolute;
+  top: 50px;
+  left: 80px;
+  bottom:0;
+} */
+
+.fixed{
+    background-color: antiquewhite;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
