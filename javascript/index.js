@@ -92,5 +92,30 @@ printAge(students[1].age);
 function printNameAndAge(name, age) {
   console.log("Hi i am " + name + "I am " + age + "years old.");
 }
-
 printNameAndAge("Ram", 20);
+
+const callBack = (callback) => {
+  console.log("i am callback");
+  callback();
+};
+
+const greet12 = () => {
+  console.log("hello shreya");
+};
+callBack(greet12);
+
+let num = [4, 5, 1, 4, 2, 12, 1, 8, 12, 6];
+let i = 0;
+let count = 0;
+while (i < num.length) {
+  console.log(i, "iiiii");
+  i++;
+  console.log(i, "iiiii");
+  if (count === 5) {
+    continue;
+  }
+  if (num[i] % 2 === 0) {
+    console.log(num[i], "number of even");
+    count++;
+  }
+}

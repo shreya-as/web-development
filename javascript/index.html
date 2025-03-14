@@ -3,8 +3,433 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="index.js"></script>
+    <title>Preview and Print with Headers, Footers, and Table</title>
+    <style>
+      /* A4 page styling */
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 auto;
+        padding: 20mm;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        page-break-after: always;
+      }
+
+      .header {
+        width: 170mm;
+        text-align: center;
+        border-bottom: 1px solid #000;
+        padding-bottom: 5mm;
+        margin: 0 auto 10mm auto;
+      }
+
+      .footer {
+        width: 170mm;
+        text-align: center;
+        font-size: 12px;
+        position: absolute;
+        bottom: 10mm;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .contenteditable {
+        min-height: 200px;
+        outline: none;
+        margin-top: 10mm;
+        margin-bottom: 20mm;
+      }
+
+      .controls {
+        text-align: center;
+        margin: 20px 0;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+
+      /* Table styling */
+      table {
+        width: 170mm;
+        border-collapse: collapse;
+        margin: 10mm auto;
+      }
+      th,
+      td {
+        border: 1px solid #000;
+        padding: 5mm;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .grand-total {
+        text-align: right;
+        font-weight: bold;
+        margin-top: 5mm;
+        width: 170mm;
+      }
+
+      @media print {
+        body {
+          margin: 0;
+        }
+        body * {
+          visibility: hidden;
+        }
+        #pages-container,
+        #pages-container * {
+          visibility: visible;
+        }
+        .page {
+          box-shadow: none;
+          position: relative;
+          margin: 0;
+          padding: 20mm;
+          width: 210mm;
+          min-height: 297mm;
+          display: block;
+        }
+        .no-print {
+          display: none;
+        }
+        .header {
+          position: static;
+        }
+        .footer {
+          position: absolute;
+          bottom: 10mm;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      @media screen {
+        .page:not(:last-child) {
+          margin-bottom: 20px;
+        }
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="controls no-print">
+      <button onclick="addNewPage()">Add New Page</button>
+      <button onclick="printDocument()">Print Preview</button>
+    </div>
+
+    <div id="pages-container">
+      <div class="page">
+        <div class="header">My Document Header</div>
+        <div class="contenteditable" contenteditable="true">
+          <table>
+            <thead>
+              <tr>
+                <th>Item Name</th>
+                <th>Item Category</th>
+                <th>Price</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody id="items-table">
+              <tr>
+                <td>Item 1</td>
+                <td>Electronics</td>
+                <td>$50</td>
+                <td>$50</td>
+              </tr>
+              <tr>
+                <td>Item 2</td>
+                <td>Clothing</td>
+                <td>$30</td>
+                <td>$30</td>
+              </tr>
+              <tr>
+                <td>Item 3</td>
+                <td>Books</td>
+                <td>$20</td>
+                <td>$20</td>
+              </tr>
+              <tr>
+                <td>Item 4</td>
+                <td>Electronics</td>
+                <td>$100</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>Item 5</td>
+                <td>Electronics</td>
+                <td>$50</td>
+                <td>$50</td>
+              </tr>
+              <tr>
+                <td>Item 6</td>
+                <td>Clothing</td>
+                <td>$30</td>
+                <td>$30</td>
+              </tr>
+              <tr>
+                <td>Item 7</td>
+                <td>Books</td>
+                <td>$20</td>
+                <td>$20</td>
+              </tr>
+              <tr>
+                <td>Item 8</td>
+                <td>Electronics</td>
+                <td>$100</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>Item 9</td>
+                <td>Electronics</td>
+                <td>$50</td>
+                <td>$50</td>
+              </tr>
+              <tr>
+                <td>Item 10</td>
+                <td>Clothing</td>
+                <td>$30</td>
+                <td>$30</td>
+              </tr>
+              <tr>
+                <td>Item 11</td>
+                <td>Books</td>
+                <td>$20</td>
+                <td>$20</td>
+              </tr>
+              <tr>
+                <td>Item 12</td>
+                <td>Electronics</td>
+                <td>$100</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>Item 13</td>
+                <td>Electronics</td>
+                <td>$50</td>
+                <td>$50</td>
+              </tr>
+              <tr>
+                <td>Item 14</td>
+                <td>Clothing</td>
+                <td>$30</td>
+                <td>$30</td>
+              </tr>
+              <tr>
+                <td>Item 15</td>
+                <td>Books</td>
+                <td>$20</td>
+                <td>$20</td>
+              </tr>
+              <tr>
+                <td>Item 16</td>
+                <td>Electronics</td>
+                <td>$100</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>Item 17</td>
+                <td>Electronics</td>
+                <td>$50</td>
+                <td>$50</td>
+              </tr>
+              <tr>
+                <td>Item 18</td>
+                <td>Clothing</td>
+                <td>$30</td>
+                <td>$30</td>
+              </tr>
+              <tr>
+                <td>Item 19</td>
+                <td>Books</td>
+                <td>$20</td>
+                <td>$20</td>
+              </tr>
+              <tr>
+                <td>Item 20</td>
+                <td>Electronics</td>
+                <td>$100</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>Item 21</td>
+                <td>Electronics</td>
+                <td>$50</td>
+                <td>$50</td>
+              </tr>
+              <tr>
+                <td>Item 22</td>
+                <td>Clothing</td>
+                <td>$30</td>
+                <td>$30</td>
+              </tr>
+              <tr>
+                <td>Item 23</td>
+                <td>Books</td>
+                <td>$20</td>
+                <td>$20</td>
+              </tr>
+              <tr>
+                <td>Item 24</td>
+                <td>Electronics</td>
+                <td>$100</td>
+                <td>$100</td>
+              </tr>
+              <tr>
+                <td>Item 25</td>
+                <td>Furniture</td>
+                <td>$150</td>
+                <td>$150</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="footer">Page 1</div>
+      </div>
+    </div>
+
+    <script>
+      const container = document.getElementById("pages-container");
+      let pageCount = 1;
+
+      function addNewPage() {
+        pageCount++;
+        const newPage = document.createElement("div");
+        newPage.className = "page";
+        newPage.innerHTML = `
+          <div class="header">My Document Header</div>
+          <div class="contenteditable" contenteditable="true">
+            <table>
+              <thead>
+                <tr>
+                  <th>Item Name</th>
+                  <th>Item Category</th>
+                  <th>Price</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Item ${pageCount * 5 - 4}</td>
+                  <td>Electronics</td>
+                  <td>$50</td>
+                  <td>$50</td>
+                </tr>
+                <tr>
+                  <td>Item ${pageCount * 5 - 3}</td>
+                  <td>Clothing</td>
+                  <td>$30</td>
+                  <td>$30</td>
+                </tr>
+                <tr>
+                  <td>Item ${pageCount * 5 - 2}</td>
+                  <td>Books</td>
+                  <td>$20</td>
+                  <td>$20</td>
+                </tr>
+                <tr>
+                  <td>Item ${pageCount * 5 - 1}</td>
+                  <td>Electronics</td>
+                  <td>$100</td>
+                  <td>$100</td>
+                </tr>
+                <tr>
+                  <td>Item ${pageCount * 5}</td>
+                  <td>Furniture</td>
+                  <td>$150</td>
+                  <td>$150</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="footer">Page ${pageCount}</div>
+        `;
+        container.appendChild(newPage);
+        splitPagesIfNeeded();
+      }
+
+      function calculateGrandTotal() {
+        let grandTotal = 0;
+        const totals = document.querySelectorAll("td:nth-child(4)"); // Select all Total cells
+        totals.forEach((totalCell) => {
+          const value = parseFloat(totalCell.textContent.replace("$", "")) || 0;
+          grandTotal += value;
+        });
+        return grandTotal;
+      }
+
+      function splitPagesIfNeeded() {
+        const pages = document.querySelectorAll(".page");
+        pages.forEach((page) => {
+          const grandTotalDiv = page.querySelector(".grand-total");
+          if (grandTotalDiv) grandTotalDiv.remove(); // Remove existing grand total from all pages
+        });
+
+        let allRows = [];
+        pages.forEach((page) => {
+          const rows = page.querySelectorAll("tbody tr");
+          rows.forEach((row) => allRows.push(row.cloneNode(true)));
+          page.querySelector("tbody").innerHTML = ""; // Clear existing rows
+        });
+
+        pageCount = 0;
+        let currentPage = null;
+        container.innerHTML = ""; // Clear container
+
+        allRows.forEach((row, index) => {
+          if (index % 5 === 0) {
+            pageCount++;
+            currentPage = document.createElement("div");
+            currentPage.className = "page";
+            currentPage.innerHTML = `
+              <div class="header">My Document Header</div>
+              <div class="contenteditable" contenteditable="true">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Item Name</th>
+                      <th>Item Category</th>
+                      <th>Price</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div class="footer">Page ${pageCount}</div>
+            `;
+            container.appendChild(currentPage);
+          }
+          currentPage.querySelector("tbody").appendChild(row);
+
+          // Add grand total to the last page after all rows are processed
+          if (index === allRows.length - 1) {
+            const grandTotal = calculateGrandTotal();
+            const contenteditable =
+              currentPage.querySelector(".contenteditable");
+            const grandTotalDiv = document.createElement("div");
+            grandTotalDiv.className = "grand-total";
+            grandTotalDiv.textContent = `Grand Total: $${grandTotal.toFixed(
+              2
+            )}`;
+            contenteditable.appendChild(grandTotalDiv);
+          }
+        });
+      }
+
+      function printDocument() {
+        splitPagesIfNeeded(); // Split pages and add grand total to the last page
+        window.print();
+      }
+
+      // Initial split on page load
+      splitPagesIfNeeded();
+    </script>
+  </body>
 </html>
