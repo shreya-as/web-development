@@ -9,7 +9,6 @@ function handleLogin(event) {
     document.getElementsByClassName("user-section")[0].style.display = "block";
     document.getElementById("user-name").textContent = username;
   }
-  console.log(username, "hey i am clicked");
 }
 
 document.getElementById("login-form").addEventListener("submit", handleLogin);
